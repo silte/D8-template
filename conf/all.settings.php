@@ -8,9 +8,6 @@
 
 $config_directories[CONFIG_SYNC_DIRECTORY] = '../conf/cmi';
 
-// Install profile
-$settings['install_profile'] = 'config_installer';
-
 // Public files path
 $settings['file_public_path'] = 'sites/default/files';
 
