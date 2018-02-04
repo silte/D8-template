@@ -15,4 +15,4 @@ $settings['install_profile'] = 'config_installer';
 $settings['file_public_path'] = 'sites/default/files';
 
 // Private files path
-$settings['file_private_path'] = realpath(.'/../files_private');
+$settings['file_private_path'] = realpath('/../files_private');
