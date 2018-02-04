@@ -1,0 +1,77 @@
+{
+  "name": "silte/d8-template",
+  "description": "Drupal 8 site template with composer",
+  "version": "1.0.0",
+  "type": "project",
+  "license": "MIT",
+  "homepage": "https://github.com/silte/d8-template",
+  "authors": [
+    {
+      "name": "Teemu Sillantaus",
+      "homepage": "https://silte.fi"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": false,
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  ],
+  "require": {
+    "composer/installers": "^1.4",
+    "drupal/admin_toolbar": "^1.22",
+    "drupal/core": "^8.4.4",
+    "drupal/pathauto": "^1.0",
+    "drupal/field_group": "^3.0-beta1",
+    "drush/drush": "^8.1.15"
+  },
+  "require-dev": {
+    "drupal/devel": "^1.2"
+  },
+  "extra": {
+    "installer-paths": {
+      "web/core": ["type:drupal-core"],
+      "web/libraries/{$name}": ["type:drupal-library"],
+      "web/modules/contrib/{$name}": ["type:drupal-module"],
+      "web/modules/custom/{$name}": ["type:drupal-module-custom"],
+      "web/profiles/{$name}": ["type:drupal-profile"],
+      "web/themes/contrib/{$name}": ["type:drupal-theme"],
+      "web/themes/custom/{$name}": ["type:drupal-theme-custom"],
+      "drush/{$name}": ["type:drupal-drush"]
+    }
+  },
+  "conflict": {
+    "drupal/drupal": "*"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "scripts": {
+    "build-dev": [
+      "@composer install --dev --prefer-dist --no-suggest --ignore-platform-reqs --ansi",
+      "@copy-configuration",
+      "cp conf/services.dev.yml web/sites/default/services.env.yml",
+      "cp conf/settings.dev.php web/sites/default/settings.env.php",
+      "@symlink-files"
+    ],
+    "build-prod": [
+      "@composer install --no-dev --prefer-dist --no-suggest --optimize-autoloader --ignore-platform-reqs --ansi",
+      "@copy-configuration",
+      "cp conf/services.prod.yml web/sites/default/services.env.yml",
+      "cp conf/settings.prod.php web/sites/default/settings.env.php",
+      "@symlink-files"
+    ],
+    "copy-configuration": [
+      "chmod 0750 web/sites/default",
+      "rm -f web/sites/default/settings.php && cp conf/settings.php web/sites/default/settings.php",
+      "cp conf/all.services.yml web/sites/default/all.settings.yml",
+      "cp conf/all.settings.php web/sites/default/all.settings.php"
+    ],
+    "symlink-files": [
+      "mkdir -m 777 -p files files_private",
+      "ln -sfn ../../../files web/sites/default/files"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+### Drupal 8 production environment services file.
+#
+# This file should contain service definitions that are needed on production environments
+#
+
+parameters:
+  twig.config: # disable twig debugging mode and enabling cache
+    debug: false
+    auto_reload: null
+    cache: true
