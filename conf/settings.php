@@ -40,6 +40,8 @@ $databases['default']['default'] = array (
 );
 
 ### Hash Salt
+// Get your Hash Salt generated here:
+// http://drupalhashsalt.com/
 $settings['hash_salt'] = '{CHANGE-ME}';
 
 
