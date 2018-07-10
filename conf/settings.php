@@ -28,11 +28,11 @@ $settings['trusted_host_patterns'] = array(
 
 // Database configuration for the project.
 $databases['default']['default'] = array (
-  'database' => 'sebastianhamalainencom',
-  'username' => 'sebastian',
-  'password' => '62*PfZ1Y&iRK',
-  'prefix' => '',
-  'host' => '127.0.0.1',
+  'database' => '{CHANGE-ME}',
+  'username' => '{CHANGE-ME}',
+  'password' => '{CHANGE-ME}',
+  'prefix' => '{CHANGE-ME}',
+  'host' => '{CHANGE-ME}',
   'port' => '3306',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
@@ -40,9 +40,7 @@ $databases['default']['default'] = array (
 );
 
 ### Hash Salt
-// Get your Hash Salt generated here:
-// http://drupalhashsalt.com/
-$settings['hash_salt'] = '5gapn1fxmz7MjDYeZQQYda1o-XbuDpxl1pUyUBrUctESzMVoRlcfBCAoJNsDygE4UcXLGEB7Uw';
+$settings['hash_salt'] = '{CHANGE-ME}';
 
 
 // Settings for all environments
