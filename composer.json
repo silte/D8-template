@@ -52,7 +52,8 @@
   },
   "scripts": {
     "build-dev": [
-      "@composer install --dev --prefer-dist --no-suggest --ignore-platform-reqs --ansi",
+      "@composer install --prefer-dist --no-suggest --ignore-platform-reqs --ansi",
+      "@drupal-scaffold",
       "@copy-configuration",
       "cp conf/services.dev.yml web/sites/default/services.env.yml",
       "cp conf/settings.dev.php web/sites/default/settings.env.php",
@@ -60,6 +61,7 @@
     ],
     "build-prod": [
       "@composer install --no-dev --prefer-dist --no-suggest --optimize-autoloader --ignore-platform-reqs --ansi",
+      "@drupal-scaffold",
       "@copy-configuration",
       "cp conf/services.prod.yml web/sites/default/services.env.yml",
       "cp conf/settings.prod.php web/sites/default/settings.env.php",
@@ -71,6 +73,7 @@
       "cp conf/all.services.yml web/sites/default/all.settings.yml",
       "cp conf/all.settings.php web/sites/default/all.settings.php"
     ],
-    "symlink-files": [ "mkdir -m 777 -p files files_private", "ln -sfn ../../../files web/sites/default/files" ]
+    "symlink-files": [ "mkdir -m 777 -p files files_private", "ln -sfn ../../../files web/sites/default/files" ],
+    "drupal-scaffold": ["DrupalComposer\\DrupalScaffold\\Plugin::scaffold"]
   }
 }
